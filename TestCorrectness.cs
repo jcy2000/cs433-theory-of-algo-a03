@@ -265,8 +265,8 @@ namespace _PA3
         {
             // testSubsetSum();
             // testKnapsack();
-            testMIS();
-            // testLCS();
+            // testMIS();
+            testLCS();
             // testLIS();
             // testVankinsMile();
         }
