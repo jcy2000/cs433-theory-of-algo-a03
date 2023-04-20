@@ -5,6 +5,11 @@ namespace _PA3
 	{
 		public static String longestCommonSubsequence(String x, String y)
 		{   // complete this function
+			// Get length of the x and y string
+			int lenz = x.Length, leny = x.Length;
+
+			int[,] sumthing = new int[1,2];
+
 			return null;
 		}
 

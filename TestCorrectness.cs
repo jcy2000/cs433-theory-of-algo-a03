@@ -263,9 +263,9 @@ namespace _PA3
 
         public static void martin()
         {
-            testSubsetSum();
-            testKnapsack();
-            // testMIS();
+            // testSubsetSum();
+            // testKnapsack();
+            testMIS();
             // testLCS();
             // testLIS();
             // testVankinsMile();
