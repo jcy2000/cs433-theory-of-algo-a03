@@ -261,14 +261,47 @@ namespace _PA3
             }
         }
 
+        private static void martinTest()
+        {
+            Console.WriteLine("\n****************** Test Vankin's Mile ******************\n");
+            int[,] board = new int[5, 5]{
+                { -1, 7, -2, 10, -5},
+                { 8, -4, 3, -6, 0},
+                { 5, 1, 5, 6, -5},
+                { -7, -4, 1, -4, 8},
+                { 7, 1, -9, 4, 0}
+            };
+            int numRows = 5;
+            int numCols = 5;
+
+            Console.WriteLine("*** Board ***\n");
+            for (int i = 0; i < numRows; i++)
+            {
+                String output = "[" + board[i, 0];
+                for (int j = 1; j < numCols; j++)
+                    output += ", " + board[i, j];
+                output += "]";
+                Console.WriteLine(output);
+            }
+            int[] startRow = { 0};
+            int[] startCol = { 1};
+            for (int i = 0; i < startRow.Length; i++)
+            {
+                int r = startRow[i];
+                int c = startCol[i];
+                Console.Write("\nStarting at [{0},{1}]\n", r, c);
+                VankinsMile.findBestPath(board, numRows, numCols, r, c);
+            }
+        }
+
         public static void martin()
         {
-            // testSubsetSum();
-            // testKnapsack();
-            // testMIS();
+            testSubsetSum();
+            testKnapsack();
+            testMIS();
             testLCS();
-            // testLIS();
-            // testVankinsMile();
+            testLIS();
+            testVankinsMile();
         }
     }
 }

@@ -8,7 +8,48 @@ namespace _433_PA3
 
         public static void findBestPath(int[,] board, int numRows, int numCols, int startRow, int startCol)
         {
-            // complete this function
+            // complete this function, I actually have a slight idea on how to do this! Yes!
+            // Instead of a solution board, we will split it into two different arrays
+            int[,] values = new int[numRows, numCols];
+            char[,] directions = new char[numRows, numCols];
+
+            // Initialize all cells to default values
+            for (int i = 0; i < numRows; i++)
+                for (int j = 0; j < numCols; j++) {
+                    values[i, j] = Int32.MinValue;
+                    directions[i, j] = '*';
+                }
+
+            // Change starting position to it's value on board
+            values[startRow, startCol] = board[startRow, startCol];
+            directions[startRow, startCol] = 'S';
+
+            // Change values for starting row based on starting position
+            for (int i = startRow + 1; i < numRows; i++) {
+                values[i, startCol] = values[i - 1, startCol] + board[i, startCol];
+                directions[i, startCol] = 'U';
+            }
+
+            // Change values for starting column based on starting position
+            for (int j = startCol + 1; j < numCols; j++) {
+                values[startRow, j] = values[startRow, j - 1] + board[startRow, j];
+                directions[startRow, j] = 'L';
+            }
+
+            // Change values of remaining cells based on surrounding cells
+            for (int i = startRow + 1; i < numRows; i++)
+                for (int j = startCol + 1; j < numCols; j++) {
+                    // If the left cell is greater than the upper cell
+                    if (values[i, j - 1] > values[i - 1, j]) {
+                        values[i, j] = board[i, j] + values[i, j - 1];
+                        directions[i, j] = 'L';
+                    } else {
+                        values[i, j] = board[i, j] + values[i - 1, j];
+                        directions[i, j] = 'U';
+                    }
+                }
+
+            pathFinder(values, directions, numRows, numCols, startRow, startCol);
         }
 
         private static void pathFinder(int[,] values, char[,] directions, int numRows, int numCols, int startRow, int startCol)
